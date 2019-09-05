@@ -14,7 +14,7 @@
       </li>
       <li class="foot-bar-item">
         <router-link to="/Car">
-          车
+          购物车
         </router-link>
       </li>
       <li class="foot-bar-item">
