@@ -14,7 +14,7 @@
           ></van-field>
         </van-cell-group>
         <div>
-          <van-button type="primary" size="large">登录</van-button>
+          <van-button  @click="loginHandler" type="primary" size="large">登录</van-button>
         </div>
       </van-tab>
       <van-tab title="注册">
@@ -74,6 +74,30 @@ export default {
           this.$toast.fail("注册失败");
         });
     },
+
+    loginHandler(){
+        axios({
+        url: url.loginUser,
+        method: "post",
+        data: {
+          userName: this.loginUsername,
+          password: this.loginPassword
+        }
+      })
+        .then(res => {
+          console.log(res)
+          if (res.data.code == 200) {
+            this.$toast.success("登录成功");
+            
+          } else {
+            this.$toast.fail("登录失败");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          this.$toast.fail("登录失败");
+        });
+    }
   }
 };
 </script>
